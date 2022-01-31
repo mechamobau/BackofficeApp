@@ -17,6 +17,8 @@
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/jest-native": "^4.0.4",
+    "@testing-library/react-native": "^9.0.0",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.66.15",
     "@types/react-test-renderer": "^17.0.1",
@@ -33,7 +35,8 @@
     "@types/react": "^17"
   },
   "jest": {
-    "preset": "react-native",
+    "preset": "@testing-library/react-native",
+    "setupFilesAfterEnv": ["@testing-library/jest-native/extend-expect"],
     "moduleFileExtensions": [
       "ts",
       "tsx",
