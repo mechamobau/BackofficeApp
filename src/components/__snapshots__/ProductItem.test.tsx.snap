@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductItem | component | integration test matches snapshot 1`] = `
+<View
+  accessible={true}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginBottom": 12,
+        "paddingBottom": 12,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+        "paddingTop": 12,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {},
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000000",
+            "fontSize": 24,
+            "fontWeight": "bold",
+            "marginBottom": 6,
+          },
+        ]
+      }
+    >
+      Product name display
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000000",
+            "fontSize": 16,
+          },
+        ]
+      }
+    >
+      $
+      100.00
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "center",
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityLabel="Remover produto"
+      accessibilityRole="button"
+      accessible={true}
+      collapsable={false}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "borderColor": "#444444",
+          "borderRadius": 20,
+          "borderWidth": 1,
+          "height": 40,
+          "justifyContent": "center",
+          "opacity": 1,
+          "width": 40,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#000000",
+              "fontSize": 22,
+            },
+          ]
+        }
+      >
+        -
+      </Text>
+    </View>
+    <Text
+      accessibilityLabel="Número de produtos: 2"
+      style={
+        Array [
+          Object {
+            "color": "#000000",
+            "fontSize": 19,
+            "marginBottom": 0,
+            "marginLeft": 15,
+            "marginRight": 15,
+            "marginTop": 0,
+          },
+        ]
+      }
+    >
+      2
+    </Text>
+    <View
+      accessibilityLabel="Adicionar produto"
+      accessibilityRole="button"
+      accessible={true}
+      collapsable={false}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "borderColor": "#444444",
+          "borderRadius": 20,
+          "borderWidth": 1,
+          "height": 40,
+          "justifyContent": "center",
+          "opacity": 1,
+          "width": 40,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#000000",
+              "fontSize": 22,
+            },
+          ]
+        }
+      >
+        +
+      </Text>
+    </View>
+  </View>
+</View>
+`;
