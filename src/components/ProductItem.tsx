@@ -1,55 +1,8 @@
 import React from 'react';
-import styled from 'styled-components/native';
+import {StyleSheet, Text, View} from 'react-native';
+import useTheme from '../hooks/useTheme';
 import Product from '../models/Product';
-
-const Title = styled.Text`
-  font-weight: bold;
-  font-size: 24px;
-  margin-bottom: 6px;
-  color: ${props => props.theme.textColor};
-`;
-
-const Value = styled.Text`
-  font-size: 16px;
-  color: ${props => props.theme.textColor};
-`;
-
-const Quantity = styled.Text`
-  margin: 0 15px;
-  font-size: 19px;
-  color: ${props => props.theme.textColor};
-`;
-
-const MainInfoWrapper = styled.View``;
-
-const QuantityControlWrapper = styled.View`
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
-
-const ControlButton = styled.TouchableOpacity`
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  align-items: center;
-  justify-content: center;
-  border-color: ${props => props.theme.buttonBorderColor};
-  border-width: 1px;
-`;
-
-const ControlButtonText = styled.Text`
-  font-size: 22px;
-  color: ${props => props.theme.textColor};
-`;
-
-const Container = styled.View`
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 10px;
-  margin-bottom: 12px;
-`;
+import RoundedControlButton from './RoundedControlButton';
 
 type BaseProps = Pick<Product, 'name' | 'quantity' | 'value'>;
 
@@ -63,35 +16,73 @@ function ProductItem(props: Props) {
 
   const formattedValue = value.toFixed(2);
 
+  const {theme} = useTheme();
+
   return (
-    <Container accessible>
-      <MainInfoWrapper>
-        <Title>{name}</Title>
-        <Value>${formattedValue}</Value>
-      </MainInfoWrapper>
-      <QuantityControlWrapper>
+    <View style={styles.container} accessible>
+      <View>
+        <Text style={[styles.title, {color: theme.textColor}]}>{name}</Text>
+        <Text style={[styles.value, {color: theme.textColor}]}>
+          ${formattedValue}
+        </Text>
+      </View>
+      <View style={styles.quantityControlWrapper}>
         {quantity >= 1 && (
-          <ControlButton
+          <RoundedControlButton
             accessibilityRole="button"
             accessibilityLabel="Remover produto"
             onPress={onRemovePress}
           >
-            <ControlButtonText>-</ControlButtonText>
-          </ControlButton>
+            -
+          </RoundedControlButton>
         )}
-        <Quantity accessibilityLabel={`Número de produtos: ${quantity}`}>
+        <Text
+          style={[styles.quantity, {color: theme.textColor}]}
+          accessibilityLabel={`Número de produtos: ${quantity}`}
+        >
           {quantity}
-        </Quantity>
-        <ControlButton
+        </Text>
+        <RoundedControlButton
           accessibilityRole="button"
           accessibilityLabel="Adicionar produto"
           onPress={onAddPress}
         >
-          <ControlButtonText>+</ControlButtonText>
-        </ControlButton>
-      </QuantityControlWrapper>
-    </Container>
+          +
+        </RoundedControlButton>
+      </View>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  title: {
+    fontWeight: 'bold',
+    fontSize: 24,
+    marginBottom: 6,
+  },
+  value: {
+    fontSize: 16,
+  },
+  quantity: {
+    marginVertical: 0,
+    marginHorizontal: 15,
+    fontSize: 19,
+  },
+  mainInfoWrapper: {},
+  quantityControlWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    marginBottom: 12,
+    width: '100%',
+  },
+});
 
 export default ProductItem;

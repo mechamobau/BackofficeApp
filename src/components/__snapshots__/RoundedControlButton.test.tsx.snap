@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RoundedControlButton | component | integration test should renders correctly 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "borderColor": "#444444",
+      "borderRadius": 20,
+      "borderWidth": 1,
+      "height": 40,
+      "justifyContent": "center",
+      "opacity": 1,
+      "width": 40,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 22,
+        },
+        Object {
+          "color": "#000000",
+        },
+      ]
+    }
+  >
+    This is a button
+  </Text>
+</View>
+`;

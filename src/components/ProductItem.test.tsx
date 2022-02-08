@@ -1,11 +1,10 @@
 import React, {ReactNode} from 'react';
 import {fireEvent, render} from '@testing-library/react-native';
 import {ProductItem} from '.';
-import {ThemeProvider} from 'styled-components/native';
-import {lightTheme} from '../theme/theme';
+import ThemeProvider from '../context/ThemeProvider';
 
 const AllProviders = ({children}: {children: ReactNode}) => (
-  <ThemeProvider theme={lightTheme}>{children}</ThemeProvider>
+  <ThemeProvider>{children}</ThemeProvider>
 );
 
 describe('ProductItem | component | integration test', () => {
