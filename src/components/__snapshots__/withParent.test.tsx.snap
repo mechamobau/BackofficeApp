@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withParent | function | unit test should render a component inside another according with argument order 1`] = `
+<View
+  testID="component-a"
+>
+  <Text
+    testID="component-b"
+  >
+    Just a dummy component
+  </Text>
+</View>
+`;
