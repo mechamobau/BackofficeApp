@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import {fireEvent, render} from '@testing-library/react-native';
-import {ProductItem} from '.';
+import ProductItem from './ProductItem';
 import ThemeProvider from '../context/ThemeProvider';
 
 const AllProviders = ({children}: {children: ReactNode}) => (
