@@ -1,6 +1,9 @@
 import {act, renderHook} from '@testing-library/react-hooks';
 import useProductList from './useProductList';
-import ProductProvider, {ProductListItem} from '../context/ProductProvider';
+import ProductProvider, {
+  ProductContext,
+  ProductListItem,
+} from '../context/ProductProvider';
 import React from 'react';
 
 const productMock1 = {
@@ -21,6 +24,21 @@ const productMock2 = {
   visible: true,
 };
 
+function mockProductsPopulation(context: ProductContext) {
+  act(() => {
+    context.addProduct({
+      name: productMock1.name,
+      quantity: productMock1.quantity,
+      value: productMock1.value,
+    });
+    context.addProduct({
+      name: productMock2.name,
+      quantity: productMock2.quantity,
+      value: productMock2.value,
+    });
+  });
+}
+
 describe('useProductList | hook | integration test', () => {
   afterEach(jest.clearAllMocks);
 
@@ -30,18 +48,7 @@ describe('useProductList | hook | integration test', () => {
         wrapper: ProductProvider,
       });
 
-      act(() => {
-        result.current.addProduct({
-          name: productMock1.name,
-          quantity: productMock1.quantity,
-          value: productMock1.value,
-        });
-        result.current.addProduct({
-          name: productMock2.name,
-          quantity: productMock2.quantity,
-          value: productMock2.value,
-        });
-      });
+      mockProductsPopulation(result.current);
 
       expect(result.current.state.products).toEqual([
         productMock1,
@@ -59,18 +66,7 @@ describe('useProductList | hook | integration test', () => {
         quantity: 3,
       };
 
-      act(() => {
-        result.current.addProduct({
-          name: productMock1.name,
-          quantity: productMock1.quantity,
-          value: productMock1.value,
-        });
-        result.current.addProduct({
-          name: productMock2.name,
-          quantity: productMock2.quantity,
-          value: productMock2.value,
-        });
-      });
+      mockProductsPopulation(result.current);
 
       act(() => {
         result.current.updateItem(productMock1.id, newProductMock1);
@@ -90,18 +86,7 @@ describe('useProductList | hook | integration test', () => {
         wrapper: ProductProvider,
       });
 
-      act(() => {
-        result.current.addProduct({
-          name: productMock1.name,
-          quantity: productMock1.quantity,
-          value: productMock1.value,
-        });
-        result.current.addProduct({
-          name: productMock2.name,
-          quantity: productMock2.quantity,
-          value: productMock2.value,
-        });
-      });
+      mockProductsPopulation(result.current);
 
       expect(result.current.state.products).toStrictEqual([
         productMock1,
@@ -131,18 +116,7 @@ describe('useProductList | hook | integration test', () => {
         wrapper: ProductProvider,
       });
 
-      act(() => {
-        result.current.addProduct({
-          name: productMock1.name,
-          quantity: productMock1.quantity,
-          value: productMock1.value,
-        });
-        result.current.addProduct({
-          name: productMock2.name,
-          quantity: productMock2.quantity,
-          value: productMock2.value,
-        });
-      });
+      mockProductsPopulation(result.current);
 
       expect(result.current.state.products).toStrictEqual([
         productMock1,
@@ -172,18 +146,7 @@ describe('useProductList | hook | integration test', () => {
         wrapper: ProductProvider,
       });
 
-      act(() => {
-        result.current.addProduct({
-          name: productMock1.name,
-          quantity: productMock1.quantity,
-          value: productMock1.value,
-        });
-        result.current.addProduct({
-          name: productMock2.name,
-          quantity: productMock2.quantity,
-          value: productMock2.value,
-        });
-      });
+      mockProductsPopulation(result.current);
 
       expect(result.current.state.products).toStrictEqual([
         productMock1,
