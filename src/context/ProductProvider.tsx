@@ -124,7 +124,12 @@ function reducer(state: State, action: Action): State {
         })),
       };
     case ActionType.FILTER_BY_NAME:
-      return state;
+      return {
+        products: state.products.map(product => ({
+          ...product,
+          visible: product.name.includes(action.searchTerm),
+        })),
+      };
   }
 }
 
