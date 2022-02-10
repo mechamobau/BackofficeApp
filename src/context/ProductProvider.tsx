@@ -4,7 +4,7 @@ import findMissingNumbersInASequence from '../utils/findMissingNumbersInASequenc
 import safeHead from '../utils/safeHead';
 import pipe from '../utils/pipe';
 
-type ProductListItem = Product & {
+export type ProductListItem = Product & {
   order: number;
   visible: boolean;
 };
@@ -49,7 +49,7 @@ type Action =
       searchTerm: string;
     };
 
-type ProductContext = {
+export type ProductContext = {
   state: State;
   addProduct: (product: Omit<Product, 'id'>) => void;
   updateList: (products: ProductListItem[]) => void;
