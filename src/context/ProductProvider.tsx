@@ -117,6 +117,12 @@ function reducer(state: State, action: Action): State {
         }),
       };
     case ActionType.CLEAR_FILTERS:
+      return {
+        products: state.products.map(product => ({
+          ...product,
+          visible: true,
+        })),
+      };
     case ActionType.FILTER_BY_NAME:
       return state;
   }
