@@ -1,5 +1,8 @@
 import React, {createContext, ReactNode, useMemo, useReducer} from 'react';
 import Product from '../models/Product';
+import findMissingNumbersInASequence from '../utils/findMissingNumbersInASequence';
+import safeHead from '../utils/safeHead';
+import pipe from '../utils/pipe';
 
 type ProductListItem = Product & {
   order: number;
@@ -72,20 +75,29 @@ type Props = {
   children: ReactNode;
 };
 
+const INITIAL_INDEX = 1;
+
 function reducer(state: State, action: Action): State {
   switch (action.type) {
-    case ActionType.ADD_PRODUCT:
+    case ActionType.ADD_PRODUCT: {
+      const productsIds = state.products.map(({id}) => id);
+
+      const createNewId = pipe(findMissingNumbersInASequence, safeHead);
+
+      const newId = createNewId(productsIds);
+
       return {
         products: [
           ...state.products,
           {
             ...action.product,
-            id: 1,
+            id: newId ?? INITIAL_INDEX,
             order: state.products.length + 1,
             visible: true,
           },
         ],
       };
+    }
     case ActionType.UPDATE_LIST:
       return {
         products: action.products,
