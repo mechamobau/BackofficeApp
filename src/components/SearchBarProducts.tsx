@@ -20,6 +20,7 @@ function SearchBarProducts({value, onChangeText, onClearPress, theme}: Props) {
         ]}
         placeholderTextColor={theme.placeholderColor}
         placeholder="Pesquisar..."
+        autoCapitalize="none"
         onChangeText={onChangeText}
         value={value}
         autoFocus
@@ -38,6 +39,7 @@ function SearchBarProducts({value, onChangeText, onClearPress, theme}: Props) {
 const styles = StyleSheet.create({
   textInputContainer: {
     width: '100%',
+    marginBottom: 15,
   },
   textInput: {
     width: '100%',
