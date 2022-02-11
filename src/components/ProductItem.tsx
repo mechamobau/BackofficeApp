@@ -6,15 +6,25 @@ import RoundedControlButton from './RoundedControlButton';
 
 type BaseProps = Pick<Product, 'name' | 'quantity' | 'value'>;
 
-type Props = BaseProps & {
-  onRemovePress?: () => void;
-  onAddPress?: () => void;
+export type Props = BaseProps & {
+  onDecreaseQuantity?: (newQuantity: number) => void;
+  onIncreaseQuantity?: (newQuantity: number) => void;
+  onRemoveProduct?: () => void;
 };
 
 function ProductItem(props: Props) {
-  const {name, quantity, value, onRemovePress, onAddPress} = props;
+  const {
+    name,
+    quantity,
+    value,
+    onDecreaseQuantity,
+    onIncreaseQuantity,
+    onRemoveProduct,
+  } = props;
 
   const formattedValue = value.toFixed(2);
+
+  const totalValue = (value * quantity).toFixed(2);
 
   const {theme} = useTheme();
 
@@ -23,15 +33,18 @@ function ProductItem(props: Props) {
       <View>
         <Text style={[styles.title, {color: theme.textColor}]}>{name}</Text>
         <Text style={[styles.value, {color: theme.textColor}]}>
-          ${formattedValue}
+          Valor unitário: ${formattedValue}
+        </Text>
+        <Text style={[styles.value, {color: theme.textColor}]}>
+          Valor total: ${totalValue}
         </Text>
       </View>
       <View style={styles.quantityControlWrapper}>
         {quantity >= 1 && (
           <RoundedControlButton
             accessibilityRole="button"
-            accessibilityLabel="Remover produto"
-            onPress={onRemovePress}
+            accessibilityLabel="Diminuir quantidade"
+            onPress={() => onDecreaseQuantity?.(quantity - 1)}
           >
             -
           </RoundedControlButton>
@@ -44,10 +57,19 @@ function ProductItem(props: Props) {
         </Text>
         <RoundedControlButton
           accessibilityRole="button"
-          accessibilityLabel="Adicionar produto"
-          onPress={onAddPress}
+          accessibilityLabel="Aumentar quantidade"
+          onPress={() => onIncreaseQuantity?.(quantity + 1)}
         >
           +
+        </RoundedControlButton>
+        <RoundedControlButton
+          accessibilityRole="button"
+          accessibilityLabel="Remover produto"
+          onPress={() => onRemoveProduct?.()}
+          buttonStyle={styles.removeButton}
+          textStyle={styles.removeButtonText}
+        >
+          X
         </RoundedControlButton>
       </View>
     </View>
@@ -82,6 +104,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginBottom: 12,
     width: '100%',
+  },
+  removeButton: {
+    marginLeft: 15,
+    borderColor: 'red',
+  },
+  removeButtonText: {
+    color: 'red',
   },
 });
 
