@@ -14,7 +14,7 @@ describe('ProductItem | component | integration test', () => {
       {wrapper: AllProviders},
     );
 
-    expect(queryByText('Product name display')).not.toBeNull();
+    expect(queryByText('Product name di...')).not.toBeNull();
     expect(queryByText('Valor unitário: $100.00')).not.toBeNull();
     expect(queryByText('Valor total: $200.00')).not.toBeNull();
     expect(queryByA11yLabel('Número de produtos: 2')).not.toBeNull();
