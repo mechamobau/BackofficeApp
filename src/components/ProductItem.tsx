@@ -31,7 +31,9 @@ function ProductItem(props: Props) {
   return (
     <View style={styles.container} accessible>
       <View>
-        <Text style={[styles.title, {color: theme.textColor}]}>{name}</Text>
+        <Text style={[styles.title, {color: theme.textColor}]}>
+          {name.length > 15 ? `${name.slice(0, 15)}...` : name}
+        </Text>
         <Text style={[styles.value, {color: theme.textColor}]}>
           Valor unitário: ${formattedValue}
         </Text>
@@ -79,7 +81,7 @@ function ProductItem(props: Props) {
 const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
-    fontSize: 24,
+    fontSize: 18,
     marginBottom: 6,
   },
   value: {
