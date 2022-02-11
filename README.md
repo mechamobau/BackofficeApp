@@ -9,6 +9,7 @@ Aplicativo feito em React Native utilizado para armazenar uma lista:
 - Filtrável
 - Armazenada em memória
 - Reativa
+- Dark mode
 
 ![Preview do Aplicativo](./preview.gif)
 
