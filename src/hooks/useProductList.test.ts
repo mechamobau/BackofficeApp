@@ -164,6 +164,7 @@ describe('useProductList | hook | integration test', () => {
         },
         productMock2,
       ]);
+      expect(result.current.state.searchTerm).toBe('Product 2');
 
       act(() => {
         result.current.clearFilters();
@@ -173,6 +174,7 @@ describe('useProductList | hook | integration test', () => {
         productMock1,
         productMock2,
       ]);
+      expect(result.current.state.searchTerm).toBe('');
     });
   });
 
@@ -184,6 +186,7 @@ describe('useProductList | hook | integration test', () => {
 
       expect(result.current.state).toEqual({
         products: [],
+        searchTerm: '',
       });
     });
 
