@@ -3,27 +3,41 @@ import type {ReactText} from 'react';
 import {
   StyleSheet,
   Text,
+  TextStyle,
   TouchableOpacity,
   TouchableOpacityProps,
+  ViewStyle,
 } from 'react-native';
 import useTheme from '../hooks/useTheme';
 
-type RoundedControlButtonProps = TouchableOpacityProps & {
+type RoundedControlButtonProps = Omit<TouchableOpacityProps, 'style'> & {
   children: ReactText;
+  buttonStyle?: ViewStyle;
+  textStyle?: TextStyle;
 };
 
 function RoundedControlButton({
   children,
+  buttonStyle = {},
+  textStyle = {},
   ...touchableOpacityProps
 }: RoundedControlButtonProps) {
   const {theme} = useTheme();
 
   return (
     <TouchableOpacity
-      style={[styles.controlButton, {borderColor: theme.buttonBorderColor}]}
+      style={[
+        styles.controlButton,
+        {borderColor: theme.buttonBorderColor, ...buttonStyle},
+      ]}
       {...touchableOpacityProps}
     >
-      <Text style={[styles.controlButtonText, {color: theme.textColor}]}>
+      <Text
+        style={[
+          styles.controlButtonText,
+          {color: theme.textColor, ...textStyle},
+        ]}
+      >
         {children}
       </Text>
     </TouchableOpacity>
