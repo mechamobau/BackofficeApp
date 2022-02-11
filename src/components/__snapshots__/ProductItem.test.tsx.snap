@@ -20,7 +20,7 @@ exports[`ProductItem | component | integration test matches snapshot 1`] = `
       style={
         Array [
           Object {
-            "fontSize": 24,
+            "fontSize": 18,
             "fontWeight": "bold",
             "marginBottom": 6,
           },
@@ -30,7 +30,7 @@ exports[`ProductItem | component | integration test matches snapshot 1`] = `
         ]
       }
     >
-      Product name display
+      Product name di...
     </Text>
     <Text
       style={
