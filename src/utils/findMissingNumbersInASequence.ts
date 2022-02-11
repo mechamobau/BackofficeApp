@@ -3,7 +3,7 @@ function findMissingNumbersInASequence(numbers: number[]): number[] {
     return numbers;
   }
 
-  const [first = 0, second] = numbers;
+  const [first, second] = numbers;
 
   if (!second) {
     return [first + 1];
