@@ -11,6 +11,7 @@ export type ProductListItem = Product & {
 
 export type State = {
   products: ProductListItem[];
+  searchTerm: string;
 };
 
 enum ActionType {
@@ -73,6 +74,7 @@ export type ProductContext = {
 
 const initialValue: State = {
   products: [],
+  searchTerm: '',
 };
 
 export const ProductContext = createContext<ProductContext | null>(null);
@@ -93,6 +95,7 @@ function reducer(state: State, action: Action): State {
       const newId = createNewId(productsIds);
 
       return {
+        ...state,
         products: [
           ...state.products,
           {
@@ -106,10 +109,12 @@ function reducer(state: State, action: Action): State {
     }
     case ActionType.UPDATE_LIST:
       return {
+        ...state,
         products: action.products,
       };
     case ActionType.UPDATE_ITEM:
       return {
+        ...state,
         products: state.products.map(product => {
           if (product.id === action.productId) {
             return {
@@ -123,6 +128,7 @@ function reducer(state: State, action: Action): State {
       };
     case ActionType.UPDATE_QUANTITY:
       return {
+        ...state,
         products: state.products.map(product => {
           if (product.id === action.productId) {
             return {
@@ -136,6 +142,7 @@ function reducer(state: State, action: Action): State {
       };
     case ActionType.CLEAR_FILTERS:
       return {
+        searchTerm: '',
         products: state.products.map(product => ({
           ...product,
           visible: true,
@@ -143,6 +150,7 @@ function reducer(state: State, action: Action): State {
       };
     case ActionType.FILTER_BY_NAME:
       return {
+        searchTerm: action.searchTerm,
         products: state.products.map(product => ({
           ...product,
           visible: product.name.includes(action.searchTerm),
@@ -150,6 +158,7 @@ function reducer(state: State, action: Action): State {
       };
     case ActionType.REMOVE_PRODUCT:
       return {
+        ...state,
         products: state.products.filter(
           product => product.id !== action.productId,
         ),
