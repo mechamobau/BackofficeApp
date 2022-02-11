@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import type {ReactNode} from 'react';
 
 import COLORS from '../constants/COLORS';
@@ -8,11 +8,13 @@ export type ThemeType = typeof lightTheme; // This is the type definition for my
 
 export const lightTheme = {
   textColor: COLORS.black,
-  buttonBorderColor: COLORS.dark,
+  placeholderColor: COLORS.dark,
+  buttonBorderColor: COLORS.black,
 };
 
 export const darkTheme: ThemeType = {
   textColor: COLORS.white,
+  placeholderColor: COLORS.light,
   buttonBorderColor: COLORS.lighter,
 };
 
@@ -35,10 +37,8 @@ function ThemeProvider({children}: Props) {
 
   const isDark = colorScheme === 'dark';
 
-  const theme = useMemo(() => (isDark ? darkTheme : lightTheme), [isDark]);
-
   const value = {
-    theme,
+    theme: isDark ? darkTheme : lightTheme,
     isDark,
   };
 
