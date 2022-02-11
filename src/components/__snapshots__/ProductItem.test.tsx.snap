@@ -44,8 +44,23 @@ exports[`ProductItem | component | integration test matches snapshot 1`] = `
         ]
       }
     >
-      $
+      Valor unitário: $
       100.00
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "fontSize": 16,
+          },
+          Object {
+            "color": "#000000",
+          },
+        ]
+      }
+    >
+      Valor total: $
+      200.00
     </Text>
   </View>
   <View
@@ -58,11 +73,11 @@ exports[`ProductItem | component | integration test matches snapshot 1`] = `
     }
   >
     <View
-      accessibilityLabel="Remover produto"
+      accessibilityLabel="Diminuir quantidade"
       accessibilityRole="button"
       accessible={true}
       collapsable={false}
-      focusable={false}
+      focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -116,11 +131,11 @@ exports[`ProductItem | component | integration test matches snapshot 1`] = `
       2
     </Text>
     <View
-      accessibilityLabel="Adicionar produto"
+      accessibilityLabel="Aumentar quantidade"
       accessibilityRole="button"
       accessible={true}
       collapsable={false}
-      focusable={false}
+      focusable={true}
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -154,6 +169,48 @@ exports[`ProductItem | component | integration test matches snapshot 1`] = `
         }
       >
         +
+      </Text>
+    </View>
+    <View
+      accessibilityLabel="Remover produto"
+      accessibilityRole="button"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "borderColor": "red",
+          "borderRadius": 20,
+          "borderWidth": 1,
+          "height": 40,
+          "justifyContent": "center",
+          "marginLeft": 15,
+          "opacity": 1,
+          "width": 40,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "fontSize": 22,
+            },
+            Object {
+              "color": "red",
+            },
+          ]
+        }
+      >
+        X
       </Text>
     </View>
   </View>
