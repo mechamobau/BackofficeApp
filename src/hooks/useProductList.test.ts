@@ -176,6 +176,25 @@ describe('useProductList | hook | integration test', () => {
       ]);
       expect(result.current.state.searchTerm).toBe('');
     });
+
+    it("should remove an item when 'remoremoveProductve' is called", () => {
+      const {result} = renderHook(() => useProductList(), {
+        wrapper: ProductProvider,
+      });
+
+      mockProductsPopulation(result.current);
+
+      expect(result.current.state.products).toStrictEqual([
+        productMock1,
+        productMock2,
+      ]);
+
+      act(() => {
+        result.current.removeProduct(productMock1.id);
+      });
+
+      expect(result.current.state.products).toStrictEqual([productMock2]);
+    });
   });
 
   describe('state', () => {
