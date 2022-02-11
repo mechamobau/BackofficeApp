@@ -10,12 +10,14 @@ export const lightTheme = {
   textColor: COLORS.black,
   placeholderColor: COLORS.dark,
   buttonBorderColor: COLORS.black,
+  primaryColor: COLORS.primary,
 };
 
 export const darkTheme: ThemeType = {
   textColor: COLORS.white,
   placeholderColor: COLORS.light,
   buttonBorderColor: COLORS.lighter,
+  primaryColor: COLORS.primary,
 };
 
 type Theme = {
