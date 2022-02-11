@@ -67,7 +67,14 @@ const App = () => {
             theme={theme}
             products={productState.products}
             onIncreaseQuantity={updateQuantity}
-            onDecreaseQuantity={updateQuantity}
+            onDecreaseQuantity={(productId, newQuantity) => {
+              if (newQuantity === 0) {
+                removeProduct(productId);
+                return;
+              }
+
+              updateQuantity(productId, newQuantity);
+            }}
             onRemoveProduct={removeProduct}
           />
         </ScrollView>
