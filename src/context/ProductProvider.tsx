@@ -9,7 +9,7 @@ export type ProductListItem = Product & {
   visible: boolean;
 };
 
-type State = {
+export type State = {
   products: ProductListItem[];
 };
 
@@ -20,6 +20,7 @@ enum ActionType {
   UPDATE_QUANTITY,
   CLEAR_FILTERS,
   FILTER_BY_NAME,
+  REMOVE_PRODUCT,
 }
 
 type Action =
@@ -47,6 +48,10 @@ type Action =
   | {
       type: ActionType.FILTER_BY_NAME;
       searchTerm: string;
+    }
+  | {
+      type: ActionType.REMOVE_PRODUCT;
+      productId: Product['id'];
     };
 
 export type ProductContext = {
@@ -63,6 +68,7 @@ export type ProductContext = {
   ) => void;
   clearFilters: () => void;
   filterByName: (searchTerm: string) => void;
+  removeProduct: (productId: Product['id']) => void;
 };
 
 const initialValue: State = {
@@ -142,6 +148,12 @@ function reducer(state: State, action: Action): State {
           visible: product.name.includes(action.searchTerm),
         })),
       };
+    case ActionType.REMOVE_PRODUCT:
+      return {
+        products: state.products.filter(
+          product => product.id !== action.productId,
+        ),
+      };
   }
 }
 
@@ -191,6 +203,12 @@ function ProductProvider({children}: Props) {
       searchTerm,
     });
 
+  const removeProduct = (productId: number) =>
+    dispatch({
+      type: ActionType.REMOVE_PRODUCT,
+      productId,
+    });
+
   const value = useMemo(
     () => ({
       state,
@@ -200,6 +218,7 @@ function ProductProvider({children}: Props) {
       updateQuantity,
       clearFilters,
       filterByName,
+      removeProduct,
     }),
     [state],
   );
