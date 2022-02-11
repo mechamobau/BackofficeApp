@@ -153,7 +153,9 @@ function reducer(state: State, action: Action): State {
         searchTerm: action.searchTerm,
         products: state.products.map(product => ({
           ...product,
-          visible: product.name.includes(action.searchTerm),
+          visible: product.name
+            .toLowerCase()
+            .includes(action.searchTerm.toLowerCase()),
         })),
       };
     case ActionType.REMOVE_PRODUCT:
