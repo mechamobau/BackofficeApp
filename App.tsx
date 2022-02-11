@@ -14,6 +14,7 @@ import {
   withParent,
   ThemeProvider,
   SearchBarProducts,
+  NewProductForm,
 } from './src';
 import STORAGE_KEY from './src/constants/STORAGE_KEY';
 import {State as ProductState} from './src/context/ProductProvider';
@@ -31,6 +32,7 @@ const App = () => {
     clearFilters,
     updateQuantity,
     removeProduct,
+    addProduct,
   } = useProductList();
 
   useLayoutEffect(() => {
@@ -60,6 +62,7 @@ const App = () => {
           onClearPress={clearFilters}
         />
         <ScrollView>
+          <NewProductForm onSubmit={addProduct} />
           <ProductList
             theme={theme}
             products={productState.products}
