@@ -1,7 +1,6 @@
 import {renderHook} from '@testing-library/react-hooks';
 import useTheme from './useTheme';
 import ThemeProvider, {darkTheme, lightTheme} from '../context/ThemeProvider';
-import COLORS from '../constants/COLORS';
 import React from 'react';
 import {useColorScheme} from 'react-native';
 
@@ -40,10 +39,7 @@ describe('useTheme | hook | integration test', () => {
 
     expect(result.current).toStrictEqual({
       isDark: false,
-      theme: {
-        buttonBorderColor: COLORS.dark,
-        textColor: COLORS.black,
-      },
+      theme: lightTheme,
     });
   });
 
